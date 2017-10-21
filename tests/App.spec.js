@@ -13,4 +13,9 @@ describe('App', () => {
     const subject = mount(<App/>)
     expect(subject.contains("Hello World")).toBeTruthy()
   })
+
+  it('Deve conter texto Hello World', () => {
+    const subject = shallow(<App/>)
+    expect(subject).toHaveText("Hello World")
+  })
 })
