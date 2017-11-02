@@ -9,10 +9,10 @@ export default class ComposeMessage extends Component {
   }
 
   onInputChange(e){
-    const value = e.target.value
-    if (!value || /^\s*$/.test(value))
+    const message = e.target.value
+    if (!message || /^\s*$/.test(message))
       return
-    this.setState({message: value})
+    this.setState({message})
   }
 
   onButtonClick(){
@@ -21,14 +21,10 @@ export default class ComposeMessage extends Component {
   }
 
   render(){
-    const {message} = this.state
-
     return <div className="compose-message">
-      <input
-        name="message"
-        id="message"
+      <input name="message" id="message"
         onChange={this.onInputChange} />
-      <button onClick={this.onButtonClick}>add message</button>
+      <button onClick={this.onButtonClick}>Add message</button>
     </div>
   }
 }
