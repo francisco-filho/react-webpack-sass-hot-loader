@@ -4,8 +4,12 @@ import App from '../src/App'
 import {shallow, mount} from 'enzyme'
 
 describe('App', () => {
+  let subject = null
+  beforeEach(()=>{
+    subject = shallow(<App/>)
+  })
+
   it('Deve estar definido', () => {
-    const subject = shallow(<App/>)
     expect(subject.contains("Hello World")).toBeTruthy()
   })
 
@@ -15,7 +19,6 @@ describe('App', () => {
   })
 
   it('Deve conter texto Hello World', () => {
-    const subject = shallow(<App/>)
     expect(subject).toHaveText("Hello World")
   })
 })
