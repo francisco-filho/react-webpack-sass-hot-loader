@@ -1,6 +1,115 @@
+$primaryColor: #3367d6;
+$borderColor: #d3d3d3;
+$borderDarkColor: #ddd;
+
 html * {
   margin: 0;
   padding: 0;
 }
 
 ul, li { list-style: none; }
+
+body {
+  font-family: Roboto, Arial, sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 10px 0;
+  font-size: 46px;
+  font-weight: 300;
+  color: $primaryColor;
+}
+
+.form-row {
+  margin-top: 14px;
+  label {
+    display: block;
+    font-weight: 500;
+    font-size: 12px;
+    margin-bottom: 3px;
+  }
+
+  select, input, textarea {
+    padding: 4px;
+    font-size: 14px;
+    -moz-outline-color: $primaryColor;
+    outline-color: $primaryColor;
+    border: 1px solid $borderColor;
+    &:hover {
+      border: 1px solid $borderDarkColor;
+    }
+    &:focus{
+      outline: 1px solid;
+      outline-color: $primaryColor;
+    }
+  }
+
+  select {
+    background-color: #fff;
+    background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.02));
+    &:hover {
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+  }
+
+  input, textarea {
+    width: 100%;
+  }
+
+  .checkbox {
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+
+    input {
+      width: initial;
+      transform: scale(1.1, 1.1);
+    }
+    label {
+      font-size: 14px;
+      display: inline-block;
+      margin: 0 6px;
+      padding: 0;
+      font-weight: normal;
+    }
+  }
+
+  a.button, button {
+    background-color: #fff;
+    border: 1px solid $borderColor;
+    display: inline-block;
+    padding: 5px 7px;
+    margin-right: 5px;
+    font-size: 14px;
+    cursor: pointer;
+
+    &.disabled {
+      user-select: none;
+      -moz-user-select: none;
+      pointer-events: none;
+      opacity: .5;
+    }
+
+    &:active {
+      background-color: #f8f8f8;
+      border: 1px solid $borderDarkColor;
+    }
+
+    &:hover {
+      &:hover {
+        box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      }
+    }
+
+    &.primary {
+      background-color: $primaryColor;
+      border: 1px solid #0d55cb;
+      color: #fff;
+      &:active {
+        background-color: #0d55cb;
+      }
+    }
+  }
+}

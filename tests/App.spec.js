@@ -1,7 +1,7 @@
 import React from 'react'
 import './enzyme-config'
 import App from '../src/App'
-import {shallow, mount} from 'enzyme'
+import {shallow} from 'enzyme'
 import ChannelHistory from "../src/ChannelHistory";
 
 describe('App', () => {
