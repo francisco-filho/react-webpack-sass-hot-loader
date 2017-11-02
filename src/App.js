@@ -64,6 +64,24 @@ export default class App extends React.Component {
             <input type="checkbox"/><label>Grande</label>
           </div>
         </div>
+        <h2>Componentes estilizados com CSS</h2>
+        <div className="form-row">
+          <label>Endereço da página</label>
+          <input placeholder="https:// ou http://"/>
+        </div>
+        <div className="form-row">
+          <label>Endereço da página</label>
+          <input placeholder="https:// ou http://"/>
+        </div>
+        <h2>Componentes estilizados com CSS</h2>
+        <div className="form-row">
+          <label>Endereço da página</label>
+          <input placeholder="https:// ou http://"/>
+        </div>
+        <div className="form-row">
+          <label>Endereço da página</label>
+          <input placeholder="https:// ou http://"/>
+        </div>
         <div className="form-row">
           <a className="button primary">Salvar alterações</a>
           <a className="button">Cancelar</a>

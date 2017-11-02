@@ -15,11 +15,18 @@ body {
   margin: 0 auto;
 }
 
-h1 {
+h1, h2 {
   margin: 10px 0;
   font-size: 46px;
   font-weight: 300;
   color: $primaryColor;
+}
+
+h2 {
+  font-size: 28px;
+  &+.form-row {
+    margin-top: 0;
+  }
 }
 
 .form-row {
