@@ -9,16 +9,7 @@ describe('App', () => {
     subject = shallow(<App/>)
   })
 
-  it('Deve estar definido', () => {
-    expect(subject.contains("Hello World")).toBeTruthy()
-  })
-
-  it('Deve funcionar com mount()', () => {
-    const subject = mount(<App/>)
-    expect(subject.contains("Hello World")).toBeTruthy()
-  })
-
-  it('Deve conter texto Hello World', () => {
-    expect(subject).toHaveText("Hello World")
+  it('Deve exibir um h1', () => {
+    expect(subject).toBePresent()
   })
 })
