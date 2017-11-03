@@ -9,7 +9,7 @@ describe('<ComposeMessage/>', () => {
 
   it('Deve iniciar com estado vazio', () =>{
     const state = subject.instance().state['message']
-    expect(state).toEqual(null)
+    expect(state).toEqual('')
   })
 
   it('Deve contar um <input/>', () => {
@@ -33,7 +33,7 @@ describe('<ComposeMessage/>', () => {
     createMessage(subject, ' ')
 
     const state = subject.instance().state
-    expect(state.message).toEqual(null)
+    expect(state.message).toEqual('')
   })
 
   it('Deve adicionar uma mensagem ao digitar algo e clicar no <button/>', () => {
@@ -42,7 +42,7 @@ describe('<ComposeMessage/>', () => {
     const button = subject.find('button')
     createMessage(subject, 'old message')
 
-    button.simulate('click')
+    button.simulate('click', preventDefault())
 
     expect(fn).toHaveBeenCalledWith('old message')
   })
@@ -50,10 +50,21 @@ describe('<ComposeMessage/>', () => {
   it('Deve chamar onMessage() ao clicar no botão', () => {
     const fn = jest.fn()
     const subject = shallow(<ComposeMessage onMessage={fn}/>)
+    const button = subject.find('button', preventDefault())
+
+    button.simulate('click', preventDefault())
+    expect(fn).toHaveBeenCalled()
+  })
+
+  it('Deve limpar o estado de .mensagem executar onMessage()', () => {
+    const fn = jest.fn()
+    const subject = shallow(<ComposeMessage onMessage={fn}/>)
     const button = subject.find('button')
 
-    button.simulate('click')
-    expect(fn).toHaveBeenCalled()
+    createMessage(subject, "eu serei limpo")
+    button.simulate('click', preventDefault())
+
+    expect(subject.instance().state.message).toBe('')
   })
 })
 
@@ -61,4 +72,10 @@ function createMessage(subject, value){
   const input = subject.find('input').first()
   const event = {target: { value: value }}
   input.simulate('change', event)
+}
+
+function preventDefault(){
+  return {
+    preventDefault: () =>{}
+  }
 }

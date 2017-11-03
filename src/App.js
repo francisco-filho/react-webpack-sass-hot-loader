@@ -29,7 +29,7 @@ export default class App extends React.Component {
   }
 
   render(){
-    return messages()
+    return this.messages()
   }
 
   componentsCSS(){
