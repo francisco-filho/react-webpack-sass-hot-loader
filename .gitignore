@@ -2,3 +2,4 @@ node_modules/
 *.iml
 public/app.js
 public/app.css
+coverage/
