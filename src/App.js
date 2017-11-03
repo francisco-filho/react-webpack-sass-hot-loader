@@ -29,6 +29,10 @@ export default class App extends React.Component {
   }
 
   render(){
+    return messages()
+  }
+
+  componentsCSS(){
     return <div>
       <h1>Componentes estilizados com CSS</h1>
       <form>
