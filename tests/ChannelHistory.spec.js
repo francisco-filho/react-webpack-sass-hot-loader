@@ -1,5 +1,4 @@
 import React from 'react'
-import './enzyme-config'
 import {shallow, mount} from 'enzyme'
 
 import ChannelHistory from '../src/ChannelHistory'

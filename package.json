@@ -50,9 +50,7 @@
     "react-dom": "^16.0.0"
   },
   "jest": {
-    "setupFiles": ["raf/polyfill"],
+    "setupFiles": ["raf/polyfill", "./tests/enzyme-config.js"],
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js"
   }
 }
-
-
