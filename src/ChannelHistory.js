@@ -8,9 +8,12 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  onRemove: (id) => dispatch(deleteMessageAtIndex(id))
-})
+// const mapDispatchToProps = (dispatch) => ({
+//   onRemove: (id) => dispatch(deleteMessageAtIndex(id))
+// })
+const mapDispatchToProps = {
+  onRemove: deleteMessageAtIndex
+}
 
 export class ChannelHistory extends Component {
   static get defaultProps(){
@@ -19,11 +22,11 @@ export class ChannelHistory extends Component {
     }
   }
   render(){
-    const {messages} = this.props
+    const {messages, onRemove} = this.props
     return <ul className="channel-history">
       { messages.map((li, key) => <ChannelMessage key={key}
                                                   message={li}
-                                                  onRemove={e => this.props.onRemove(key)}
+                                                  onRemove={e => onRemove(key)}
       />) }
     </ul>;
   }

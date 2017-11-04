@@ -15,7 +15,7 @@ export default function reducer(state = initialState, action = {}){
     case DELETE_MESSAGE:
       return {
         ...state,
-        messages: state.messages.filter((msg, i) => i !== action.id)
+        messages: state.messages.filter((msg, i) => i !== action.index)
       }
     default:
       return state
@@ -32,6 +32,6 @@ export function postMessage(message){
 export function deleteMessageAtIndex(index){
   return {
     type: DELETE_MESSAGE,
-    id: index
+    index
   }
 }

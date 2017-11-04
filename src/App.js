@@ -7,24 +7,13 @@ export default class App extends React.Component {
   constructor(){
     super()
     this.state = { messages: []}
-    this.onMessage = this.onMessage.bind(this)
-  }
-
-  onMessage(e){
-    this.setState((prev) => {
-      return {
-        ...prev,
-        messages: prev.messages.concat([e])
-      }
-    })
   }
 
   messages(){
-    const { messages } = this.state
     return <div>
       <h1>Messages</h1>
-      <ChannelHistory messages={messages}/>
-      <ComposeMessage onMessage={ this.onMessage }/>
+      <ChannelHistory/>
+      <ComposeMessage/>
     </div>
   }
 

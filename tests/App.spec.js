@@ -24,12 +24,4 @@ describe('App', () => {
   it('Deve iniciar com state.messages vazio', () => {
     expect(subject.instance().state.messages).toEqual([])
   })
-
-  it('Deve adicionar uma mensagem quando onMessage() for chamada', () => {
-    const instance = subject.instance()
-    instance.onMessage('new message1')
-    instance.onMessage('new message2')
-
-    expect(instance.state.messages).toEqual(['new message1', 'new message2'])
-  })
 })

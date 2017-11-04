@@ -35,6 +35,7 @@ export class ComposeMessage extends Component {
   render(){
     return <div className="compose-message form-row">
       <input
+        placeholder="write a message"
         value={this.state.message}
         onChange={this.onInputChange} />
       <button className="primary" onClick={this.onButtonClick}>Add message</button>
