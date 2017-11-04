@@ -1,6 +1,16 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {postMessage} from "./ducks/channel";
 
-export default class ComposeMessage extends Component {
+const mapStateToProps = undefined
+
+const mapDispatchToProps = (dispatch) => ({
+  onMessage: (message) => {
+    dispatch(postMessage(message))
+  }
+})
+
+export class ComposeMessage extends Component {
   constructor(){
     super()
     this.state = {message: ''}
@@ -31,3 +41,5 @@ export default class ComposeMessage extends Component {
     </div>
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(ComposeMessage)

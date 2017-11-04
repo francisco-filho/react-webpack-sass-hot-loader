@@ -1,7 +1,7 @@
 import React from 'react'
 import {shallow, mount} from 'enzyme'
 
-import ComposeMessage from '../src/ComposeMessage'
+import {ComposeMessage} from '../src/ComposeMessage'
 
 describe('<ComposeMessage/>', () => {
   let subject = shallow(<ComposeMessage/>)
@@ -41,7 +41,7 @@ describe('<ComposeMessage/>', () => {
     const button = subject.find('button')
     createMessage(subject, 'old message')
 
-    button.simulate('click', preventDefault())
+    button.simulate('click', event())
 
     expect(fn).toHaveBeenCalledWith('old message')
   })
@@ -49,9 +49,9 @@ describe('<ComposeMessage/>', () => {
   it('Deve chamar onMessage() ao clicar no botão', () => {
     const fn = jest.fn()
     const subject = shallow(<ComposeMessage onMessage={fn}/>)
-    const button = subject.find('button', preventDefault())
+    const button = subject.find('button', event())
 
-    button.simulate('click', preventDefault())
+    button.simulate('click', event())
     expect(fn).toHaveBeenCalled()
   })
 
@@ -61,7 +61,7 @@ describe('<ComposeMessage/>', () => {
     const button = subject.find('button')
 
     createMessage(subject, "eu serei limpo")
-    button.simulate('click', preventDefault())
+    button.simulate('click', event())
 
     expect(subject.instance().state.message).toBe('')
   })
@@ -73,8 +73,9 @@ function createMessage(subject, value){
   input.simulate('change', event)
 }
 
-function preventDefault(){
+function event(){
   return {
-    preventDefault: () =>{}
+    preventDefault: () =>{},
+    stopPropagation: () =>{}
   }
 }
