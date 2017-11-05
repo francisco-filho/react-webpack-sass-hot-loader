@@ -19,12 +19,21 @@ describe('<ComposeMessage/>', () => {
     expect(subject.find('button')).toBePresent()
   })
 
-  it('Deve atualizar valor da mensagem ao digitar no <input/>', () => {
+  it('Deve limpar valor da mensagem ao digitar no <input/>', () => {
     const subject = shallow(<ComposeMessage/>)
     createMessage(subject, 'new message')
 
     const state = subject.instance().state
     expect(state.message).toEqual('new message')
+  })
+
+  it('Deve rejeitar mensagens vazias', () => {
+    const fn = jest.fn()
+    const subject = shallow(<ComposeMessage onMessage={fn}/>)
+    createMessage(subject, ' ')
+    subject.find('button').simulate('click', event())
+
+    expect(fn).not.toHaveBeenCalled()
   })
 
   it('Deve manter da mensagem se <input/> for vazio', () => {
@@ -46,10 +55,11 @@ describe('<ComposeMessage/>', () => {
     expect(fn).toHaveBeenCalledWith('old message')
   })
 
-  it('Deve chamar onMessage() ao clicar no botão', () => {
+  it('Deve chamar onMessage() ao digitar texto e clicar no botão', () => {
     const fn = jest.fn()
     const subject = shallow(<ComposeMessage onMessage={fn}/>)
     const button = subject.find('button', event())
+    createMessage(subject, 'hello')
 
     button.simulate('click', event())
     expect(fn).toHaveBeenCalled()

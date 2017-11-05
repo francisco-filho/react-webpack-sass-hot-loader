@@ -26,7 +26,11 @@ export class ComposeMessage extends Component {
   }
 
   onButtonClick(e){
+    const {message} = this.state
     const {onMessage} = this.props
+    if (!message || /^\s*$/.test(message))
+      return
+
     onMessage && onMessage(this.state.message)
     this.setState({message: ''})
     e.preventDefault()
